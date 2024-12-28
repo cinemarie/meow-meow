@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1e1e2f;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 0 0 10px #fff, 0 0 20px #f39c12;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #fff;
+            font-size: 1em;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .cat-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://placekitten.com/800/800') repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="cat-background"></div>
+
+    <div class="container">
+        <h1>Классного и счастливого Нового года!</h1>
+        <p>Пусть ваш год будет ярким и удачным!</p>
+    </div>
+
+    <div class="sparkles" id="sparkles"></div>
+
+    <script>
+        // Generate sparkles
+        for (let i = 0; i < 100; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'absolute';
+            sparkle.style.width = '5px';
+            sparkle.style.height = '5px';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.background = `rgba(255, 255, 255, ${Math.random()})`;
+            sparkle.style.top = `${Math.random() * 100}vh`;
+            sparkle.style.left = `${Math.random() * 100}vw`;
+            sparkle.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.8)';
+            document.getElementById('sparkles').appendChild(sparkle);
+        }
+
+        // Generate snowflakes
+        for (let i = 0; i < 50; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerText = '❄';
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.fontSize = `${Math.random() * 1.5 + 0.5}em`;
+            snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            document.body.appendChild(snowflake);
+        }
+    </script>
+</body>
+</html>
